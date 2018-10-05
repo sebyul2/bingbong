@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "docker-compose -f docker/docker-compose.yml up",
+    "tag": "docker tag video-chat asia.gcr.io/test-taggle/video-chat:latest",
+    "push": "docker push asia.gcr.io/test-taggle/video-chat:latest",
+    "deploy": "npm run tag && npm run push && gcloud compute instances reset \"video-chat-test\" --zone \"asia-northeast1-a\"",
+    "ssh": "gcloud compute --project \"test-taggle\" ssh --zone \"asia-northeast1-a\" \"video-chat-test\"",
+    "redis": "docker-compose -f docker/docker-compose-redis.yml up"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "express": "^4.16.3",
+    "hapi": "^8.0.0",
+    "redis": "^2.8.0",
+    "socket.io": "^2.1.1",
+    "twilio": "^3.20.0",
+    "webrtc-adapter": "^6.4.0"
+  }
+}

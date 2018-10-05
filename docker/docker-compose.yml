@@ -1,0 +1,8 @@
+version: '2'
+services:
+  video-chat:
+    build: .
+    container_name: video-chat_1
+    image: video-chat
+    ports:
+    - "3000:3000"

@@ -1,0 +1,16 @@
+FROM node:latest
+
+RUN mkdir -p /app/video-chat
+
+ADD public /app/video-chat/public
+ADD index.js /app/video-chat/index.js
+ADD package.json /app/video-chat/package.json
+ADD entrypoint.sh /entrypoint.sh
+
+RUN cd /app/video-chat \
+&& npm install
+
+VOLUME /app/video-chat
+
+EXPOSE 3000
+ENTRYPOINT ["sh", "/entrypoint.sh"]
